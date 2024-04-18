@@ -1,0 +1,132 @@
+                         -----------------------------------------------------------------------------------------------------                                   
+ 21/02/2024                  Worked on :                   Ruggedboard -imux6ul
+                         -----------------------------------------------------------------------------------------------------
+     TEAM 2: 
+             Manjunath E L
+             Shivani
+             
+             
+             
+      
+      TASK 1: Booting the board with the mmc 
+      
+      Step 1 :- Flashing barebox.bin into SD-card 8 MB raw space
+      
+                 $ sudo dd if=<path of the barebox image> of=/dev/sd<a/b/c/d> bs=512 skip=2 seek=2   //It will create a SD card partion directly
+                 $ sync
+      
+      TASK 2: Booting the board with the NAND
+      
+      
+      TASK 3 : Practice on the all the Testcases 
+               
+              * User leds
+              * User switch
+              * CAN
+              * RS232
+              * USB
+              * gpio testcases
+              * ethernet testcases
+              * RTC test cases
+              * Expansion header
+              * i2C_testcases
+              * spi
+              etc...............
+                
+      
+      TASK 4 :  ----- USING CAN Protocol send the data to im6ul to Ruggedboard a5d2x-----
+      
+      Target side:
+*********************************************
+root@ruggedboard-imx6ul:~# 
+root@ruggedboard-imx6ul:~#  ifconfig can0
+can0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          UP RUNNING NOARP  MTU:16  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:10 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:34 
+
+root@ruggedboard-imx6ul:~# ip link set can0 down
+root@ruggedboard-imx6ul:~# ip link set can0 type can bitrate 50000
+root@ruggedboard-imx6ul:~# ip link set can0 up
+root@ruggedboard-imx6ul:~# cansend can0 123#1232555555
+root@ruggedboard-imx6ul:~# cansend can0 123#1232555555
+root@ruggedboard-imx6ul:~# cansend can0 123#1232555555
+root@ruggedboard-imx6ul:~# cansend can0 123#1234567890
+root@ruggedboard-imx6ul:~# cansend can0 123#1234567890111213
+
+
+Host side:
+***************************************
+root@phyboard-segin-imx6ul-2:~# 
+root@phyboard-segin-imx6ul-2:~#  ifconfig can0
+can0      Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          UP RUNNING NOARP  MTU:16  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:10 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:25 
+
+root@phyboard-segin-imx6ul-2:~# ip link set can0 down
+root@phyboard-segin-imx6ul-2:~# ip link set can0 type can bitrate 50000
+root@phyboard-segin-imx6ul-2:~# ip link set can0 up
+root@phyboard-segin-imx6ul-2:~# candump can0
+
+  can0  123   [5]  12 32 55 55 55
+  can0  123   [5]  12 32 55 55 55
+  can0  123   [5]  12 32 55 55 55
+  can0  123   [5]  12 34 56 78 90
+  can0  123   [8]  12 34 56 78 90 11 12 13
+  can0  123   [8]  12 34 56 78 90 11 12 13
+  can0  123   [8]  12 34 56 78 90 11 12 13
+  
+  
+ 
+ 
+ 
+ TASK 5: Changing the Banner name in SD card for imux6ul
+ 
+      sudo apt-get install figlet
+       
+           figlet PHYTEC
+            -> Copy the PHytec displayed
+            
+      Go to the imux6ul terminal
+        
+        --> cd etc/
+        --> vi issue
+                    
+                 -->Past the PHYTEC you copied 
+                     
+         then reboot the board.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+              
+                         
+      

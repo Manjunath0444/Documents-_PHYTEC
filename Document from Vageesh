@@ -1,0 +1,22 @@
+MQTT (Message Queuing Telemetry Transport) is a lightweight messaging protocol that is widely used in the Internet of Things (IoT) and machine-to-machine (M2M) .communications
+
+MQTT is designed to be simple, efficient, and reliable, making it ideal for IoT and M2M applications where network bandwidth and power consumption are limited. It operates on top of the TCP/IP protocol and uses publish-subscribe messaging pattern, which enables multiple clients to receive messages on a given topic or channel.
+
+Here is how MQTT works:
+
+    The MQTT client (publisher) sends a message to the MQTT broker (message broker), specifying the topic or channel to which the message belongs.
+    The MQTT broker receives the message and stores it in a message queue until it is delivered to the subscriber(s).
+    The MQTT client (subscriber) subscribes to a particular topic or channel by sending a subscription request to the broker.
+    The MQTT broker checks its subscription list and sends the message to all clients that have subscribed to the same topic or channel.
+
+MQTT uses a hierarchical topic structure, which makes it easy to organize and filter messages. The topic structure consists of one or more topic levels, separated by forward slashes (/). For example, a temperature sensor could publish its readings to the topic "sensors/temperature/room1".
+
+MQTT supports three levels of Quality of Service (QoS) for message delivery:
+
+    QoS 0 (at most once): The message is delivered to the subscriber(s) once without any acknowledgment or confirmation. This level provides the lowest reliability but the highest throughput.
+    QoS 1 (at least once): The message is delivered to the subscriber(s) at least once, and the sender waits for an acknowledgment from the receiver. If the acknowledgment is not received, the message is sent again. This level provides moderate reliability and throughput.
+    QoS 2 (exactly once): The message is delivered to the subscriber(s) exactly once, and both the sender and the receiver exchange acknowledgments to ensure that the message is not lost or duplicated. This level provides the highest reliability but the lowest throughput.
+
+MQTT can be used with various programming languages and platforms, and there are many open-source and commercial MQTT brokers and client libraries available. Some popular MQTT brokers include Eclipse Mosquitto, HiveMQ, and RabbitMQ.
+
+In summary, MQTT is a lightweight, efficient, and reliable messaging protocol that enables IoT and M2M devices to communicate with each other over a network. Its simple publish-subscribe model and hierarchical topic structure make it easy to use and scale.s
